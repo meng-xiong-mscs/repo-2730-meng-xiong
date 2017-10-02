@@ -25,13 +25,14 @@
 
         lblEmployeeContrib.Text = Convert.ToString(intemploycontrib)
         lblEmployeeContrib.Text = intemploycontrib.ToString("C2")
+        lblEmployeeContrib.Text = "txtGrossPay.Txt" + txtEmployeeRate.Text
 
         'Calculate Employer contributions 
         intemployercontrib = decWeeklyPay * 52 * decEmployerRate
 
         'To string Employee Contributions
         lblEmployerContrib.Text = Convert.ToString(intemployercontrib)
-        lblEmployerContrib.Text = intemployercontrib.ToString("C2")
+        lblEmployerContrib.Text = (5).ToString("C2")
 
 
         'Calculate total annual contributions
