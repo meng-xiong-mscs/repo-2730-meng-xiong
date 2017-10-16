@@ -142,14 +142,12 @@ Public Class Form1
             intNum2 = intTemp
         End If
 
-        If intNum2 = 0 Then
+        If intNum1 = 0 Then
             MessageBox.Show("Cannot divide by 0", "Division by 0",
                 MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
-
-            intQuotient = intNum1 / intNum2
-
-            lblQuotient.Text = intQuotient.ToString("n2")
+            intQuotient = intNum2 / intNum1
+            lblQuotient.Text = intQuotient.ToString()
 
         End If
     End Sub
