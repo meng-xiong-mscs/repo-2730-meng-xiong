@@ -23,14 +23,14 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.lblShipping = New System.Windows.Forms.Label()
-        Me.txtOrder = New System.Windows.Forms.TextBox()
         Me.txtCard = New System.Windows.Forms.TextBox()
+        Me.txtOrder = New System.Windows.Forms.TextBox()
+        Me.lblShipping = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.txtSales = New System.Windows.Forms.TextBox()
         Me.txtID = New System.Windows.Forms.TextBox()
@@ -61,41 +61,27 @@ Partial Class Form1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Free shipping for orders over $100 with Savannah CC"
         '
-        'Label1
+        'txtCard
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(7, 33)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(101, 17)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "&Order Amount:"
+        Me.txtCard.Location = New System.Drawing.Point(149, 61)
+        Me.txtCard.Name = "txtCard"
+        Me.txtCard.Size = New System.Drawing.Size(100, 22)
+        Me.txtCard.TabIndex = 7
         '
-        'Label2
+        'txtOrder
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(146, 33)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(113, 17)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "&Savannah (Y/N):"
+        Me.txtOrder.Location = New System.Drawing.Point(10, 61)
+        Me.txtOrder.Name = "txtOrder"
+        Me.txtOrder.Size = New System.Drawing.Size(100, 22)
+        Me.txtOrder.TabIndex = 6
         '
-        'Label3
+        'lblShipping
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(301, 33)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(117, 17)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Shipping Charge:"
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(468, 22)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(110, 51)
-        Me.Button1.TabIndex = 3
-        Me.Button1.Text = "Calculate (And)"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.lblShipping.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblShipping.Location = New System.Drawing.Point(304, 61)
+        Me.lblShipping.Name = "lblShipping"
+        Me.lblShipping.Size = New System.Drawing.Size(123, 40)
+        Me.lblShipping.TabIndex = 5
         '
         'Button2
         '
@@ -106,29 +92,41 @@ Partial Class Form1
         Me.Button2.Text = "Calculate (Or)"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'lblShipping
+        'Button1
         '
-        Me.lblShipping.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblShipping.Location = New System.Drawing.Point(304, 61)
-        Me.lblShipping.Name = "lblShipping"
-        Me.lblShipping.Size = New System.Drawing.Size(123, 40)
-        Me.lblShipping.TabIndex = 5
+        Me.Button1.Location = New System.Drawing.Point(468, 22)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(110, 51)
+        Me.Button1.TabIndex = 3
+        Me.Button1.Text = "Calculate (And)"
+        Me.Button1.UseVisualStyleBackColor = True
         '
-        'txtOrder
+        'Label3
         '
-        Me.txtOrder.Location = New System.Drawing.Point(10, 61)
-        Me.txtOrder.Name = "txtOrder"
-        Me.txtOrder.Size = New System.Drawing.Size(100, 22)
-        Me.txtOrder.TabIndex = 6
-        Me.txtOrder.Text = "100"
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(301, 33)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(117, 17)
+        Me.Label3.TabIndex = 2
+        Me.Label3.Text = "Shipping Charge:"
         '
-        'txtCard
+        'Label2
         '
-        Me.txtCard.Location = New System.Drawing.Point(149, 61)
-        Me.txtCard.Name = "txtCard"
-        Me.txtCard.Size = New System.Drawing.Size(100, 22)
-        Me.txtCard.TabIndex = 7
-        Me.txtCard.Text = "Y"
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(146, 33)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(113, 17)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "&Savannah (Y/N):"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(7, 33)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(101, 17)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "&Order Amount:"
         '
         'GroupBox2
         '
