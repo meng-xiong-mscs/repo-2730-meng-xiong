@@ -21,15 +21,13 @@ Public Class Form1
         lblPound.Text = String.Empty
         lblRand.Text = String.Empty
 
-        If txtAmDollar.Text = String.Empty Then
+        Double.TryParse(txtAmDollar.Text, dblAmDollar)
+
+        If dblAmDollar = 0 Then
             MessageBox.Show("Please enter the number of American dollars.",
                             "Currency Converter", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         Else
-            Double.TryParse(txtAmDollar.Text, dblAmDollar)
-            Double.TryParse(lblEuro.Text, dblEuro)
-            Double.TryParse(lblPound.Text, dblpound)
-            Double.TryParse(lblRand.Text, dblrand)
 
             dblEuro = dblEURO_RATE * dblAmDollar
             dblpound = dblPOUND_RATE * dblAmDollar
@@ -57,15 +55,13 @@ Public Class Form1
         lblPound.Text = String.Empty
         lblRand.Text = String.Empty
 
-        If txtAmDollar.Text = String.Empty Then
+        Double.TryParse(txtAmDollar.Text, dblAmDollar)
+
+        If dblAmDollar <> 0 Then
             MessageBox.Show("Please enter the number of American dollars.",
                             "Currency Converter", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         Else
-            Double.TryParse(txtAmDollar.Text, dblAmDollar)
-            Double.TryParse(lblEuro.Text, dblEuro)
-            Double.TryParse(lblPound.Text, dblpound)
-            Double.TryParse(lblRand.Text, dblrand)
 
             dblEuro = dblEURO_RATE * dblAmDollar
             dblpound = dblPOUND_RATE * dblAmDollar
@@ -83,16 +79,19 @@ Public Class Form1
         Dim dblOrdered As Double
         Dim dblPrice As Double
         Dim dblTotalDue As Double
-
+        Dim dblShipping As Double = 0.0
 
         Double.TryParse(txtOrdered.Text, dblOrdered)
         Double.TryParse(txtPrice.Text, dblPrice)
 
-        If MessageBox.Show("Charge for shipping?", "Shipping",
-            MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,) = Windows.Forms.DialogResult.Yes Then
-            MessageBox.Show("+15")
+        Dim dialogresult As DialogResult
+        dialogresult = MessageBox.Show("Charge for Shipping?", "Shipping",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)
+        If dialogresult = Windows.Forms.DialogResult.Yes Then
+            dblShipping = 15.0
         End If
-        dblTotalDue = dblOrdered * dblPrice
+
+        dblTotalDue = dblOrdered * dblPrice + dblShipping
 
         'Display result
         lblTotalDue.Text = dblTotalDue.ToString("c2")
@@ -115,13 +114,13 @@ Public Class Form1
         txtPrevious.Text = String.Empty
 
         'Message Box
-        If dblCurrent >= dblPrevious Then
+        If dblCurrent < dblPrevious Then
             MessageBox.Show("The current reading must be greater than or equal to the previous reading", "Triple County",
                        MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
 
 
-            dblBill = dblRATE * dblCurrent - dblPrevious
+            dblBill = dblRATE * (dblCurrent - dblPrevious)
 
             lblBill.Text = dblBill.ToString("c2")
         End If
@@ -143,14 +142,14 @@ Public Class Form1
             intNum2 = intTemp
         End If
 
-        If intNum1 = 0 Then
+        If intNum2 = 0 Then
             MessageBox.Show("Cannot divide by 0", "Division by 0",
                 MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
 
             intQuotient = intNum1 / intNum2
 
-            lblQuotient.Text = intQuotient.ToString()
+            lblQuotient.Text = intQuotient.ToString("n2")
 
         End If
     End Sub
