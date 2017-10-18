@@ -168,13 +168,13 @@ Public Class frmMain
 
         Select Case intQuantity
             Case 1 To 10
-                dblDiscount = 0.0
+                dblRate = 0.0
             Case 11 To 15
-                dblDiscount = 0.02
-            Case Is > 20
-                dblDiscount = 0.025
+                dblRate = 0.02
+            Case 16 To 20
+                dblRate = 0.025
             Case Else
-                dblDiscount = 0.03
+                dblRate = 0.03
         End Select
 
         dblTotalWithoutDiscount = dblPrice * intQuantity
