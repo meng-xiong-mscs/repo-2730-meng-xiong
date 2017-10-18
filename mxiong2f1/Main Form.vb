@@ -38,59 +38,69 @@ Public Class Form1
         Dim dblTotalDue As Double
         Dim dblParkingFee As Double
         Dim dblDailyRoomCharge As Double
+        Dim blnIsRoomReservedOK As Boolean
+        Dim blnIsNightsOK As Boolean
+        Dim blnIsAdultsOK As Boolean
+        Dim blnIsChildrenOK As Boolean
+
+
 
 
         'Store inputs as variables
-        Integer.TryParse(txtRooms.Text, intRoomsReserved)
-        Integer.TryParse(txtNights.Text, intNights)
-        Integer.TryParse(txtAdults.Text, intAdults)
+        blnIsRoomReservedOK = Integer.TryParse(txtRooms.Text, intRoomsReserved)
+        blnIsNightsOK = Integer.TryParse(txtNights.Text, intNights)
+        blnIsAdultsOK = Integer.TryParse(txtAdults.Text, intAdults)
         Integer.TryParse(txtChildren.Text, intChildren)
 
-        'calculate total number of guests
-        intNumGuests = intAdults + intChildren
-        'Calculate number of rooms required
-        dblRoomsRequired = intNumGuests / intMAX_PER_ROOM
+        If blnIsRoomReservedOK AndAlso blnIsNightsOK AndAlso blnIsAdultsOK Then
 
-        'determine whether number of reserved rooms is
-        'adequate and then either displa a message or
-        'calculae and display the charges
-        If intRoomsReserved < dblRoomsRequired Then
-            MessageBox.Show(strMSG, "Treeline Resort",
+
+            'calculate total number of guests
+            intNumGuests = intAdults + intChildren
+            'Calculate number of rooms required
+            dblRoomsRequired = intNumGuests / intMAX_PER_ROOM
+
+            'determine whether number of reserved rooms is
+            'adequate and then either displa a message or
+            'calculae and display the charges
+            If intRoomsReserved < dblRoomsRequired Then
+                MessageBox.Show(strMSG, "Treeline Resort",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information)
-        End If
-
-        'Calculate charges
-        If radQueen.Checked Then
-            If radStandard.Checked Then
-                dblDailyRoomCharge = dblDAILY_ROOM_CHG_QUEEN_STAND
             Else
-                dblDailyRoomCharge = dblDAILY_ROOM_CHG_QUEEN_ATRIUM
-            End If
-        Else
-            If radStandard.Checked Then
-                dblDailyRoomCharge = dblDAILY_ROOM_CHG_KING_STAND
-            Else
-                dblDailyRoomCharge = dblDAILY_ROOM_CHG_KING_ATRIUM
-            End If
-        End If
-        dblTotalRoomChg = intRoomsReserved *
+                'Calculate charges
+                If radQueen.Checked Then
+                    If radStandard.Checked Then
+                        dblDailyRoomCharge = dblDAILY_ROOM_CHG_QUEEN_STAND
+                    Else
+                        dblDailyRoomCharge = dblDAILY_ROOM_CHG_QUEEN_ATRIUM
+                    End If
+                Else
+                    If radStandard.Checked Then
+                        dblDailyRoomCharge = dblDAILY_ROOM_CHG_KING_STAND
+                    Else
+                        dblDailyRoomCharge = dblDAILY_ROOM_CHG_KING_ATRIUM
+                    End If
+                End If
+                dblTotalRoomChg = intRoomsReserved *
                     intNights * dblDailyRoomCharge
-            dblTax = dblTotalRoomChg * dblTAX_RATE
-            dblTotalResortFee = intRoomsReserved *
+                dblTax = dblTotalRoomChg * dblTAX_RATE
+                dblTotalResortFee = intRoomsReserved *
                         intNights * dblDAILY_RESORT_FEE
-            If chkParkingFee.Checked Then
-                dblParkingFee = intNights * dblDAILY_PARKING_FEE
-            End If
-            dblTotalDue = dblTotalRoomChg +
+                If chkParkingFee.Checked Then
+                    dblParkingFee = intNights * dblDAILY_PARKING_FEE
+                End If
+                dblTotalDue = dblTotalRoomChg +
                         dblTax + dblTotalResortFee + dblParkingFee
 
-            'display charges
-            lblRoomChg.Text = dblTotalRoomChg.ToString("n2")
-                    lblTax.Text = dblTax.ToString("n2")
-            lblResortFee.Text = dblTotalResortFee.ToString("n2")
-            lblParkingFee.Text = dblParkingFee.ToString("n2")
-            lblTotalDue.Text = dblTotalDue.ToString("c2")
+                'display charges
+                lblRoomChg.Text = dblTotalRoomChg.ToString("n2")
+                lblTax.Text = dblTax.ToString("n2")
+                lblResortFee.Text = dblTotalResortFee.ToString("n2")
+                lblParkingFee.Text = dblParkingFee.ToString("n2")
+                lblTotalDue.Text = dblTotalDue.ToString("c2")
+            End If
+        End If
 
     End Sub
     Private Sub ClearLabels(sender As Object, e As EventArgs) _
@@ -112,14 +122,11 @@ Public Class Form1
         ) Handles txtRooms.KeyPress, txtNights.KeyPress,
         txtAdults.KeyPress, txtChildren.KeyPress
 
-        'Allows the text box to accept only numbers and the backspace
-
         If (e.KeyChar < "0" OrElse e.KeyChar > "9") AndAlso
         e.KeyChar <> ControlChars.Back Then
             'cancel the key
             e.Handled = True
         End If
-
     End Sub
 
     Private Sub txtRooms_Enter(sender As Object, e As EventArgs) Handles txtRooms.Enter
