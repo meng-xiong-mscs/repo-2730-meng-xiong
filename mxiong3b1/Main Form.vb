@@ -59,13 +59,12 @@ Public Class frmMain
     End Sub
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim dbltax As Double
-        Dim dbltotal As Double
+
         For i As Integer = 1 To 4
             lstPrices.Items.Add(i.ToString("n2"))
         Next
 
-        Dim dblpretax As Double = 0
+        Dim dblpretaxtotal As Double = 0
         Dim strselecteditem As String
         Dim dblSelectedPrice As Double
 
@@ -73,14 +72,15 @@ Public Class frmMain
             lstPrices.SelectedIndex = index
             strselecteditem = lstPrices.SelectedItem.ToString()
             Double.TryParse(strselecteditem, dblSelectedPrice)
-            dblpretax = dblSelectedPrice + dblpretax
-        Next
+            dblpretaxtotal = dblSelectedPrice + dblpretaxtotal
+        Next index
 
-        dblpretax.ToString()
-        dbltax = dblTAXRATE * dblpretax
-        dbltax.ToString()
-        dbltotal = dblpretax + dbltax
-        dbltotal.ToString()
+
+
+        lblPreTax.Text = dblpretaxtotal.ToString("f")
+        lblTax.Text = CType(Val(dblTAXRATE * dblpretaxtotal), String)
+        lblTotal.Text = dblpretaxtotal.ToString() + lblTax.Text
+        lstPrices.SelectedIndex = -1
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
@@ -91,13 +91,21 @@ Public Class frmMain
         Dim dblPretaxtotal As Double
 
         Do While intlist < lstPrices.Items.Count
-            Double.TryParse(strprice, dblPrice)
+            Double.TryParse(strPrice, dblPrice)
             intlist = intlist + 1
             lstPrices.SelectedIndex = intlist
             strPrice = lstPrices.SelectedItem.ToString
-            Double.TryParse(strprice, dblPrice)
+            Double.TryParse(strPrice, dblPrice)
             dblPretaxtotal += dblPrice
         Loop
+
+    End Sub
+
+    Private Sub lstPrices_KeyDown(sender As Object, e As KeyEventArgs) Handles lstPrices.KeyDown
+        If lstPrices.SelectedIndex <> -1 AndAlso (e.KeyCode = Keys.Delete) Then
+            lstPrices.Items.RemoveAt(lstPrices.SelectedIndex)
+        End If
+
 
     End Sub
 End Class
