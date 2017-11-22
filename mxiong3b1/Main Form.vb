@@ -84,20 +84,28 @@ Public Class frmMain
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        Dim strPrice As String = InputBox("Valid Prices: 1.00 to 9.99", "Valid Entry")
+        'Dim strPrice As String = InputBox("Valid Prices: 1.00 to 9.99", "Valid Entry")
+        Dim strPrice As String
+        strPrice = InputBox("Valid Prices: 1.00 to 9.99", "Valid Entry")
         Dim dblPrice As Double
         Double.TryParse(strPrice, dblPrice)
         Dim intlist As Integer = 0
         Dim dblPretaxtotal As Double
 
+
         Do While intlist < lstPrices.Items.Count
+            strPrice = InputBox("Valid Prices: 1.00 to 9.99", "Invalid Entry")
             Double.TryParse(strPrice, dblPrice)
             intlist = intlist + 1
-            lstPrices.SelectedIndex = intlist
             strPrice = lstPrices.SelectedItem.ToString
             Double.TryParse(strPrice, dblPrice)
             dblPretaxtotal += dblPrice
         Loop
+
+        lblPreTax.Text = dblPretaxtotal.ToString("f")
+        lblTax.Text = CType(Val(dblTAXRATE * dblPretaxtotal), String)
+        lblTotal.Text = dblPretaxtotal.ToString() + lblTax.Text
+        lstPrices.SelectedIndex = -1
 
     End Sub
 
@@ -106,6 +114,22 @@ Public Class frmMain
             lstPrices.Items.RemoveAt(lstPrices.SelectedIndex)
         End If
 
+        Dim dblpretaxtotal As Double = 0
+            Dim strselecteditem As String
+            Dim dblSelectedPrice As Double
 
+            For index As Integer = 0 To lstPrices.Items.Count - 1
+                lstPrices.SelectedIndex = index
+                strselecteditem = lstPrices.SelectedItem.ToString()
+                Double.TryParse(strselecteditem, dblSelectedPrice)
+                dblpretaxtotal = dblSelectedPrice + dblpretaxtotal
+            Next index
+
+
+
+            lblPreTax.Text = dblpretaxtotal.ToString("f")
+            lblTax.Text = CType(Val(dblTAXRATE * dblpretaxtotal), String)
+            lblTotal.Text = dblpretaxtotal.ToString() + lblTax.Text
+            lstPrices.SelectedIndex = -1
     End Sub
 End Class
