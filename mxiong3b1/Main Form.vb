@@ -77,29 +77,35 @@ Public Class frmMain
 
 
 
-        lblPreTax.Text = dblpretaxtotal.ToString("f")
+        lblPreTax.Text = dblpretaxtotal.ToString("n")
         lblTax.Text = CType(Val(dblTAXRATE * dblpretaxtotal), String)
         lblTotal.Text = dblpretaxtotal.ToString() + lblTax.Text
         lstPrices.SelectedIndex = -1
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        'Dim strPrice As String = InputBox("Valid Prices: 1.00 to 9.99", "Valid Entry")
         Dim strPrice As String
-        strPrice = InputBox("Valid Prices: 1.00 to 9.99", "Valid Entry")
         Dim dblPrice As Double
-        Double.TryParse(strPrice, dblPrice)
         Dim intlist As Integer = 0
         Dim dblPretaxtotal As Double
 
 
-        Do While intlist < lstPrices.Items.Count
-            strPrice = InputBox("Valid Prices: 1.00 to 9.99", "Invalid Entry")
+        'strPrice = InputBox("Valid Prices: 1.00 to 9.99", "Valid Entry")
+        'Double.TryParse(strPrice, dblPrice)
+
+        For newprices As Double = 1.0 To 9.99
+            strPrice = InputBox("Valid Prices: 1.00 to 9.99", "Valid Entry")
             Double.TryParse(strPrice, dblPrice)
             intlist = intlist + 1
-            strPrice = lstPrices.SelectedItem.ToString
+            strPrice = lstPrices.SelectedItem.ToString()
             Double.TryParse(strPrice, dblPrice)
             dblPretaxtotal += dblPrice
+        Next
+
+        Do While intlist < lstPrices.Items.Count
+            If intlist < 0 Then
+                strPrice = InputBox("Valid Prices: 1.00 to 9.99", "Invalid Entry")
+            End If
         Loop
 
         lblPreTax.Text = dblPretaxtotal.ToString("f")
