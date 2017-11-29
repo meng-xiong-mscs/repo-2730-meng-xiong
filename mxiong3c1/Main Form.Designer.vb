@@ -30,14 +30,14 @@ Partial Public Class frmMain
         Me.radFuncCentimeters = New System.Windows.Forms.RadioButton()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.TxtEarthWeight = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.lblWeight = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.rdoPlanetSub = New System.Windows.Forms.RadioButton()
-        Me.rdoPlanetFunc = New System.Windows.Forms.RadioButton()
         Me.cboPlanets = New System.Windows.Forms.ComboBox()
+        Me.rdoPlanetSub = New System.Windows.Forms.RadioButton()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblWeight = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.TxtEarthWeight = New System.Windows.Forms.TextBox()
+        Me.rdoPlanetFunc = New System.Windows.Forms.RadioButton()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -148,6 +148,7 @@ Partial Public Class frmMain
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.rdoPlanetFunc)
         Me.GroupBox2.Controls.Add(Me.cboPlanets)
         Me.GroupBox2.Controls.Add(Me.rdoPlanetSub)
         Me.GroupBox2.Controls.Add(Me.Label6)
@@ -162,54 +163,14 @@ Partial Public Class frmMain
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "p426-427 #4-6 weight on other planets"
         '
-        'TxtEarthWeight
+        'cboPlanets
         '
-        Me.TxtEarthWeight.Location = New System.Drawing.Point(14, 66)
-        Me.TxtEarthWeight.Margin = New System.Windows.Forms.Padding(2)
-        Me.TxtEarthWeight.Name = "TxtEarthWeight"
-        Me.TxtEarthWeight.Size = New System.Drawing.Size(55, 32)
-        Me.TxtEarthWeight.TabIndex = 2
-        Me.TxtEarthWeight.Text = "100"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(9, 28)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(125, 25)
-        Me.Label3.TabIndex = 3
-        Me.Label3.Text = "Earth Weight:"
-        '
-        'lblWeight
-        '
-        Me.lblWeight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblWeight.Location = New System.Drawing.Point(158, 137)
-        Me.lblWeight.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.lblWeight.Name = "lblWeight"
-        Me.lblWeight.Size = New System.Drawing.Size(81, 30)
-        Me.lblWeight.TabIndex = 8
-        Me.lblWeight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(153, 28)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(106, 25)
-        Me.Label5.TabIndex = 9
-        Me.Label5.Text = "Weight On:"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(282, 28)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(147, 25)
-        Me.Label6.TabIndex = 10
-        Me.Label6.Text = "Calculate Using:"
+        Me.cboPlanets.BackColor = System.Drawing.SystemColors.ScrollBar
+        Me.cboPlanets.FormattingEnabled = True
+        Me.cboPlanets.Location = New System.Drawing.Point(158, 66)
+        Me.cboPlanets.Name = "cboPlanets"
+        Me.cboPlanets.Size = New System.Drawing.Size(124, 33)
+        Me.cboPlanets.TabIndex = 12
         '
         'rdoPlanetSub
         '
@@ -222,30 +183,69 @@ Partial Public Class frmMain
         Me.rdoPlanetSub.TabStop = True
         Me.rdoPlanetSub.Text = "Sub"
         '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(282, 28)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(147, 25)
+        Me.Label6.TabIndex = 10
+        Me.Label6.Text = "Calculate Using:"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(153, 28)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(106, 25)
+        Me.Label5.TabIndex = 9
+        Me.Label5.Text = "Weight On:"
+        '
+        'lblWeight
+        '
+        Me.lblWeight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblWeight.Location = New System.Drawing.Point(158, 137)
+        Me.lblWeight.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblWeight.Name = "lblWeight"
+        Me.lblWeight.Size = New System.Drawing.Size(81, 30)
+        Me.lblWeight.TabIndex = 8
+        Me.lblWeight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(9, 28)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(125, 25)
+        Me.Label3.TabIndex = 3
+        Me.Label3.Text = "Earth Weight:"
+        '
+        'TxtEarthWeight
+        '
+        Me.TxtEarthWeight.Location = New System.Drawing.Point(14, 66)
+        Me.TxtEarthWeight.Margin = New System.Windows.Forms.Padding(2)
+        Me.TxtEarthWeight.Name = "TxtEarthWeight"
+        Me.TxtEarthWeight.Size = New System.Drawing.Size(55, 32)
+        Me.TxtEarthWeight.TabIndex = 2
+        Me.TxtEarthWeight.Text = "100"
+        '
         'rdoPlanetFunc
         '
-        Me.rdoPlanetFunc.Location = New System.Drawing.Point(300, 444)
+        Me.rdoPlanetFunc.Location = New System.Drawing.Point(287, 97)
         Me.rdoPlanetFunc.Margin = New System.Windows.Forms.Padding(2)
         Me.rdoPlanetFunc.Name = "rdoPlanetFunc"
         Me.rdoPlanetFunc.Size = New System.Drawing.Size(142, 26)
         Me.rdoPlanetFunc.TabIndex = 12
         Me.rdoPlanetFunc.Text = "Function"
         '
-        'cboPlanets
-        '
-        Me.cboPlanets.BackColor = System.Drawing.SystemColors.ScrollBar
-        Me.cboPlanets.FormattingEnabled = True
-        Me.cboPlanets.Location = New System.Drawing.Point(158, 66)
-        Me.cboPlanets.Name = "cboPlanets"
-        Me.cboPlanets.Size = New System.Drawing.Size(124, 33)
-        Me.cboPlanets.TabIndex = 12
-        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(536, 667)
-        Me.Controls.Add(Me.rdoPlanetFunc)
+        Me.ClientSize = New System.Drawing.Size(515, 667)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))

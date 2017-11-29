@@ -86,7 +86,7 @@ Public Class frmMain
 
     Private Function CalcWeightFunc(ByVal intWeight As Integer) As Double
         Dim dblGravity As Double = 0.0
-        Select Case cboPlanets.Text
+        Select Case CType(cboPlanets.SelectedItem, String)
             Case "Earth"
                 dblGravity = 1.0
             Case "Mercury", "Mars"
@@ -109,7 +109,7 @@ Public Class frmMain
 
     Private Sub CalcWeightsub(ByVal intWeight As Integer, ByRef dblWeightOnPlanet As Double)
         Dim dblGravity As Double = 0.0
-        Select Case cboPlanets.Text
+        Select Case CType(cboPlanets.SelectedItem, String)
             Case "Earth"
                 dblGravity = 1.0
             Case "Mercury", "Mars"
@@ -131,19 +131,17 @@ Public Class frmMain
     End Sub
 
     Private Sub WeightInputChanged(sender As Object, e As EventArgs) _
-        Handles TxtEarthWeight.TextChanged, lblWeight.TextChanged
+        Handles TxtEarthWeight.TextChanged, cboPlanets.SelectedValueChanged
 
-        Dim dblweight As Double = 0.0
         Dim intweight As Integer = 0
         Dim dblWeightOnPlanet As Double = 0.0
-        Dim dblGravity As Double = 0.0
 
-        Double.TryParse(TxtEarthWeight.Text, dblweight)
+        Int32.TryParse(TxtEarthWeight.Text, intweight)
 
         If rdoPlanetSub.Checked Then
-            CalcWeightsub(intweight, dblGravity)
+            CalcWeightsub(intweight, dblWeightOnPlanet)
         ElseIf rdoPlanetFunc.Checked Then
-            dblWeightOnPlanet = CalcWeightFunc(CInt(dblGravity))
+            dblWeightOnPlanet = CalcWeightFunc(intweight)
         End If
         lblWeight.Text = dblWeightOnPlanet.ToString("n")
     End Sub
