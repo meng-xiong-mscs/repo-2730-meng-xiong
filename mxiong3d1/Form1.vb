@@ -24,23 +24,105 @@ Public Class Form1
         txtMonth.SelectAll()
     End Sub
     Private Sub btnForNext_Click(sender As Object, e As EventArgs) Handles btnForNext.Click
+        lblAvg.Text = String.Empty
+        lblLessThanAvg.Text = String.Empty
+
+        Dim intsub As Integer
         Dim dblavg As Double
         Dim inttotal As Integer = intsold.GetUpperBound(0)
         For intnum As Integer = 0 To inttotal
-            dblavg = intnum + intsold(inttotal)
+            inttotal += intsold(intnum)
+            'dblavg = intnum + intsold(inttotal)
         Next intnum
+        dblavg = inttotal / 4
         lblAvg.Text = dblavg.ToString
+
+        For intnum As Integer = 0 To inttotal
+            'inttotal += intsold(intnum)
+            lblLessThanAvg.Text &= intsold(intsub).ToString & ", "
+            If lblLessThanAvg.Text.EndsWith(", ") Then
+                lblLessThanAvg.Text = lblLessThanAvg.Text.Substring(0, lblLessThanAvg.Text.Length - 2)
+            End If
+            'dblavg = intnum + intsold(inttotal)
+        Next intnum
+
+        'Dim intsub As Integer = intsold.GetUpperBound(0)
+        'For intnum As Integer = 0 To inttotal
+        '    inttotal += intsold(intsub)
+        '    lblLessThanAvg.Text &= intsold(intsub).ToString & ", "
+        '    If lblLessThanAvg.Text.EndsWith(", ") Then
+        '        lblLessThanAvg.Text = lblLessThanAvg.Text.Substring(0, lblLessThanAvg.Text.Length - 2)
+        '    End If
+        'Next intnum
     End Sub
 
     Private Sub btnForEachNext_Click(sender As Object, e As EventArgs) Handles btnForEachNext.Click
-
+        Dim dblavg As Double
+        Dim intsub As Integer
+        Dim inttotal As Integer = intsold.GetUpperBound(0)
+        For Each intnum As Integer In intsold
+            inttotal += intnum
+        Next intnum
+        dblavg = inttotal / 4
+        lblAvg.Text = dblavg.ToString
+        For Each intnum As Integer In intsold
+            lblLessThanAvg.Text &= intsold(intsub).ToString & ", "
+            If lblLessThanAvg.Text.EndsWith(", ") Then
+                lblLessThanAvg.Text = lblLessThanAvg.Text.Substring(0, lblLessThanAvg.Text.Length - 2)
+            End If
+        Next intnum
     End Sub
 
     Private Sub btnDoLoop_Click(sender As Object, e As EventArgs) Handles btnDoLoop.Click
 
+        Dim intsub As Integer
+        Dim dblavg As Double
+        Dim inttotalsub As Integer
+        Dim intavg As Integer
+        Dim inttotal As Integer = intsold.GetUpperBound(0)
+        Do While inttotalsub <= inttotal
+            intavg += intsold(inttotalsub)
+            inttotalsub += 1
+        Loop
+        dblavg = intavg / 4
+        lblAvg.Text = dblavg.ToString
+        Do While inttotalsub <= inttotal
+            intavg += intsold(inttotalsub)
+            inttotalsub += 1
+            lblLessThanAvg.Text &= intsold(intsub).ToString & ", "
+            If lblLessThanAvg.Text.EndsWith(", ") Then
+                lblLessThanAvg.Text = lblLessThanAvg.Text.Substring(0, lblLessThanAvg.Text.Length - 2)
+            End If
+        Loop
     End Sub
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         Me.Close()
+    End Sub
+
+    Private Sub btnRetail_Click(sender As Object, e As EventArgs) Handles btnRetail.Click
+        'dblWholeSale(0) = 100.0
+        Dim dblsale As Double
+        Dim strbox As String
+        For intSub As Integer = 0 To dblWholeSale.GetUpperBound(0)
+            Do While dblsale < 0.01 Or dblsale > 1.0
+                strbox = InputBox("Mark Up", "Enter Mark Up Rate")
+                Double.TryParse(strbox, dblsale)
+                lstRetail.Items.Add(dblWholeSale(intSub).ToString("n2").PadLeft(6))
+            Loop
+        Next intSub
+    End Sub
+
+    Private Sub btnWholesale_Click(sender As Object, e As EventArgs) Handles btnWholesale.Click
+        For intSub As Integer = 0 To dblWholeSale.GetUpperBound(0)
+            dblWholeSale(intSub) = Convert.ToDouble(lstWholesale.Items(intSub))
+        Next intSub
+        lstRetail.Items.Clear()
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        For intSub As Integer = 0 To dblWholeSale.GetUpperBound(0)
+            lstWholesale.Items.Add(dblWholeSale(intSub).ToString("n2").PadLeft(6))
+        Next intSub
     End Sub
 End Class

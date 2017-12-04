@@ -23,23 +23,31 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.txtMonth = New System.Windows.Forms.TextBox()
-        Me.lblDays = New System.Windows.Forms.Label()
-        Me.btnDisplayDays = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnDisplayDays = New System.Windows.Forms.Button()
+        Me.lblDays = New System.Windows.Forms.Label()
+        Me.txtMonth = New System.Windows.Forms.TextBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblLessThanAvg = New System.Windows.Forms.Label()
         Me.btnExit = New System.Windows.Forms.Button()
         Me.btnDoLoop = New System.Windows.Forms.Button()
         Me.btnForEachNext = New System.Windows.Forms.Button()
         Me.btnForNext = New System.Windows.Forms.Button()
         Me.lblAvg = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.lblLessThanAvg = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.btnWholesale = New System.Windows.Forms.Button()
+        Me.lstWholesale = New System.Windows.Forms.ListBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lstRetail = New System.Windows.Forms.ListBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.btnRetail = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -56,30 +64,14 @@ Partial Class Form1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Days in month"
         '
-        'txtMonth
+        'Label2
         '
-        Me.txtMonth.Location = New System.Drawing.Point(154, 50)
-        Me.txtMonth.Name = "txtMonth"
-        Me.txtMonth.Size = New System.Drawing.Size(65, 22)
-        Me.txtMonth.TabIndex = 7
-        Me.txtMonth.Text = "1"
-        '
-        'lblDays
-        '
-        Me.lblDays.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblDays.Location = New System.Drawing.Point(154, 94)
-        Me.lblDays.Name = "lblDays"
-        Me.lblDays.Size = New System.Drawing.Size(65, 28)
-        Me.lblDays.TabIndex = 8
-        '
-        'btnDisplayDays
-        '
-        Me.btnDisplayDays.Location = New System.Drawing.Point(71, 169)
-        Me.btnDisplayDays.Name = "btnDisplayDays"
-        Me.btnDisplayDays.Size = New System.Drawing.Size(115, 40)
-        Me.btnDisplayDays.TabIndex = 9
-        Me.btnDisplayDays.Text = "&Display Days"
-        Me.btnDisplayDays.UseVisualStyleBackColor = True
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(33, 105)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(114, 17)
+        Me.Label2.TabIndex = 11
+        Me.Label2.Text = "&Number of Days:"
         '
         'Label1
         '
@@ -90,14 +82,30 @@ Partial Class Form1
         Me.Label1.TabIndex = 10
         Me.Label1.Text = "&Month Number:"
         '
-        'Label2
+        'btnDisplayDays
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(33, 105)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(114, 17)
-        Me.Label2.TabIndex = 11
-        Me.Label2.Text = "&Number of Days:"
+        Me.btnDisplayDays.Location = New System.Drawing.Point(71, 169)
+        Me.btnDisplayDays.Name = "btnDisplayDays"
+        Me.btnDisplayDays.Size = New System.Drawing.Size(115, 40)
+        Me.btnDisplayDays.TabIndex = 9
+        Me.btnDisplayDays.Text = "&Display Days"
+        Me.btnDisplayDays.UseVisualStyleBackColor = True
+        '
+        'lblDays
+        '
+        Me.lblDays.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblDays.Location = New System.Drawing.Point(154, 94)
+        Me.lblDays.Name = "lblDays"
+        Me.lblDays.Size = New System.Drawing.Size(65, 28)
+        Me.lblDays.TabIndex = 8
+        '
+        'txtMonth
+        '
+        Me.txtMonth.Location = New System.Drawing.Point(154, 50)
+        Me.txtMonth.Name = "txtMonth"
+        Me.txtMonth.Size = New System.Drawing.Size(65, 22)
+        Me.txtMonth.TabIndex = 7
+        Me.txtMonth.Text = "1"
         '
         'GroupBox2
         '
@@ -116,6 +124,35 @@ Partial Class Form1
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "P522 #9 Avg, min sold"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(15, 36)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(179, 17)
+        Me.Label6.TabIndex = 14
+        Me.Label6.Text = "Values: 250, 225, 193, 260"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(15, 158)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(48, 17)
+        Me.Label5.TabIndex = 13
+        Me.Label5.Text = "< Avg:"
+        '
+        'lblLessThanAvg
+        '
+        Me.lblLessThanAvg.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.lblLessThanAvg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblLessThanAvg.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLessThanAvg.Location = New System.Drawing.Point(99, 147)
+        Me.lblLessThanAvg.Name = "lblLessThanAvg"
+        Me.lblLessThanAvg.Size = New System.Drawing.Size(133, 46)
+        Me.lblLessThanAvg.TabIndex = 12
+        Me.lblLessThanAvg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'btnExit
         '
@@ -173,40 +210,89 @@ Partial Class Form1
         Me.Label3.TabIndex = 10
         Me.Label3.Text = "Avg Sold:"
         '
-        'lblLessThanAvg
+        'GroupBox3
         '
-        Me.lblLessThanAvg.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.lblLessThanAvg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblLessThanAvg.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLessThanAvg.Location = New System.Drawing.Point(99, 147)
-        Me.lblLessThanAvg.Name = "lblLessThanAvg"
-        Me.lblLessThanAvg.Size = New System.Drawing.Size(133, 46)
-        Me.lblLessThanAvg.TabIndex = 12
-        Me.lblLessThanAvg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.GroupBox3.Controls.Add(Me.btnWholesale)
+        Me.GroupBox3.Controls.Add(Me.Label4)
+        Me.GroupBox3.Controls.Add(Me.lstWholesale)
+        Me.GroupBox3.Controls.Add(Me.btnRetail)
+        Me.GroupBox3.Controls.Add(Me.lstRetail)
+        Me.GroupBox3.Controls.Add(Me.Label7)
+        Me.GroupBox3.Location = New System.Drawing.Point(13, 312)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(561, 254)
+        Me.GroupBox3.TabIndex = 2
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "p523 #13 Wholesale, retail prices"
         '
-        'Label5
+        'btnWholesale
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(15, 158)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(48, 17)
-        Me.Label5.TabIndex = 13
-        Me.Label5.Text = "< Avg:"
+        Me.btnWholesale.Location = New System.Drawing.Point(300, 160)
+        Me.btnWholesale.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnWholesale.Name = "btnWholesale"
+        Me.btnWholesale.Size = New System.Drawing.Size(131, 51)
+        Me.btnWholesale.TabIndex = 8
+        Me.btnWholesale.Text = "&Return Array to Wholesale Prices"
         '
-        'Label6
+        'lstWholesale
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(15, 36)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(179, 17)
-        Me.Label6.TabIndex = 14
-        Me.Label6.Text = "Values: 250, 225, 193, 260"
+        Me.lstWholesale.Enabled = False
+        Me.lstWholesale.Font = New System.Drawing.Font("Courier New", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lstWholesale.FormattingEnabled = True
+        Me.lstWholesale.ItemHeight = 18
+        Me.lstWholesale.Location = New System.Drawing.Point(22, 72)
+        Me.lstWholesale.Margin = New System.Windows.Forms.Padding(2)
+        Me.lstWholesale.Name = "lstWholesale"
+        Me.lstWholesale.Size = New System.Drawing.Size(114, 148)
+        Me.lstWholesale.TabIndex = 11
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(18, 51)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(78, 17)
+        Me.Label4.TabIndex = 10
+        Me.Label4.Text = "Wholesale:"
+        '
+        'lstRetail
+        '
+        Me.lstRetail.Enabled = False
+        Me.lstRetail.Font = New System.Drawing.Font("Courier New", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lstRetail.FormattingEnabled = True
+        Me.lstRetail.ItemHeight = 18
+        Me.lstRetail.Location = New System.Drawing.Point(140, 72)
+        Me.lstRetail.Margin = New System.Windows.Forms.Padding(2)
+        Me.lstRetail.Name = "lstRetail"
+        Me.lstRetail.Size = New System.Drawing.Size(115, 148)
+        Me.lstRetail.TabIndex = 13
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(136, 51)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(48, 17)
+        Me.Label7.TabIndex = 12
+        Me.Label7.Text = "Retail:"
+        '
+        'btnRetail
+        '
+        Me.btnRetail.Location = New System.Drawing.Point(300, 72)
+        Me.btnRetail.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnRetail.Name = "btnRetail"
+        Me.btnRetail.Size = New System.Drawing.Size(131, 51)
+        Me.btnRetail.TabIndex = 7
+        Me.btnRetail.Text = "&Update Array to Retail Prices"
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(908, 549)
+        Me.ClientSize = New System.Drawing.Size(908, 616)
+        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "Form1"
@@ -215,6 +301,8 @@ Partial Class Form1
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -235,4 +323,11 @@ Partial Class Form1
     Friend WithEvents Label5 As Label
     Friend WithEvents lblLessThanAvg As Label
     Friend WithEvents Label6 As Label
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents btnWholesale As Button
+    Friend WithEvents Label4 As Label
+    Friend WithEvents lstWholesale As ListBox
+    Friend WithEvents btnRetail As Button
+    Friend WithEvents lstRetail As ListBox
+    Friend WithEvents Label7 As Label
 End Class
