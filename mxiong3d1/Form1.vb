@@ -16,7 +16,7 @@ Public Class Form1
         Dim intMonthNumber As Integer
         Dim intDaysInMonth() As Integer = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
         If Integer.TryParse(txtMonth.Text, intMonthNumber) AndAlso intMonthNumber >= 1 AndAlso intMonthNumber <= 12 Then
-            lblDays.Text = intDaysInMonth(intMonthNumber).ToString
+            lblDays.Text = intDaysInMonth(intMonthNumber - 1).ToString
         Else
             MessageBox.Show("Invalid month. Enter a number from 1 to 12.", "Month", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
@@ -27,38 +27,25 @@ Public Class Form1
         lblAvg.Text = String.Empty
         lblLessThanAvg.Text = String.Empty
 
-        Dim intsub As Integer
         Dim dblavg As Double
-        Dim inttotal As Integer = intsold.GetUpperBound(0)
-        For intnum As Integer = 0 To inttotal
+        Dim inttotal As Integer = 0
+        For intnum As Integer = 0 To intsold.GetUpperBound(0)
             inttotal += intsold(intnum)
-            'dblavg = intnum + intsold(inttotal)
         Next intnum
         dblavg = inttotal / 4
         lblAvg.Text = dblavg.ToString
 
-        For intnum As Integer = 0 To inttotal
-            'inttotal += intsold(intnum)
-            lblLessThanAvg.Text &= intsold(intsub).ToString & ", "
-            If lblLessThanAvg.Text.EndsWith(", ") Then
-                lblLessThanAvg.Text = lblLessThanAvg.Text.Substring(0, lblLessThanAvg.Text.Length - 2)
+        For intnum As Integer = 0 To intsold.GetUpperBound(0)
+            If intsold(intnum) < dblavg Then
+                lblLessThanAvg.Text &= intsold(intnum).ToString() & ", "
             End If
-            'dblavg = intnum + intsold(inttotal)
         Next intnum
-
-        'Dim intsub As Integer = intsold.GetUpperBound(0)
-        'For intnum As Integer = 0 To inttotal
-        '    inttotal += intsold(intsub)
-        '    lblLessThanAvg.Text &= intsold(intsub).ToString & ", "
-        '    If lblLessThanAvg.Text.EndsWith(", ") Then
-        '        lblLessThanAvg.Text = lblLessThanAvg.Text.Substring(0, lblLessThanAvg.Text.Length - 2)
-        '    End If
-        'Next intnum
     End Sub
 
     Private Sub btnForEachNext_Click(sender As Object, e As EventArgs) Handles btnForEachNext.Click
+        lblAvg.Text = String.Empty
+        lblLessThanAvg.Text = String.Empty
         Dim dblavg As Double
-        Dim intsub As Integer
         Dim inttotal As Integer = intsold.GetUpperBound(0)
         For Each intnum As Integer In intsold
             inttotal += intnum
@@ -66,16 +53,15 @@ Public Class Form1
         dblavg = inttotal / 4
         lblAvg.Text = dblavg.ToString
         For Each intnum As Integer In intsold
-            lblLessThanAvg.Text &= intsold(intsub).ToString & ", "
-            If lblLessThanAvg.Text.EndsWith(", ") Then
-                lblLessThanAvg.Text = lblLessThanAvg.Text.Substring(0, lblLessThanAvg.Text.Length - 2)
+            If intsold(intnum) < dblavg Then
+                lblLessThanAvg.Text &= intsold(intnum).ToString() & ", "
             End If
         Next intnum
     End Sub
 
     Private Sub btnDoLoop_Click(sender As Object, e As EventArgs) Handles btnDoLoop.Click
-
-        Dim intsub As Integer
+        lblAvg.Text = String.Empty
+        lblLessThanAvg.Text = String.Empty
         Dim dblavg As Double
         Dim inttotalsub As Integer
         Dim intavg As Integer
@@ -87,11 +73,8 @@ Public Class Form1
         dblavg = intavg / 4
         lblAvg.Text = dblavg.ToString
         Do While inttotalsub <= inttotal
-            intavg += intsold(inttotalsub)
-            inttotalsub += 1
-            lblLessThanAvg.Text &= intsold(intsub).ToString & ", "
-            If lblLessThanAvg.Text.EndsWith(", ") Then
-                lblLessThanAvg.Text = lblLessThanAvg.Text.Substring(0, lblLessThanAvg.Text.Length - 2)
+            If intsold(inttotalsub) < dblavg Then
+                lblLessThanAvg.Text &= intsold(inttotalsub).ToString() & ", "
             End If
         Loop
     End Sub
