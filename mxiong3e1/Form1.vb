@@ -35,25 +35,25 @@ Public Class Form1
     End Sub
 
     Private Function CountValue(intSearchValue As Integer) As Integer
+        Dim inttotal As Integer = 0
         For intCom As Integer = 0 To intCommission.Count - 1
 
             If intCommission(intCom) = intSearchValue Then
-                intCom = intCom + 1
-                Return intCom
+                inttotal = inttotal + 1
             End If
         Next intCom
 
-        Return 0
+        Return inttotal
 
     End Function
     Private Function CountRange(intSearchMin As Integer, intSearchMax As Integer) As Integer
         Dim intnum As Integer = 0
         For intCom As Integer = 0 To intCommission.Count - 1
-            If intCommission(intCom) = intSearchMax Or intCommission(intCom) = intSearchMin Then
-                Return intCom
+            If intCommission(intCom) <= intSearchMax AndAlso intCommission(intCom) >= intSearchMin Then
+                intnum = intnum + 1
             End If
         Next intCom
-        Return 0
+        Return intnum
     End Function
 
     Private Sub cboSearchRanges_TextChanged(sender As Object, e As EventArgs) Handles cboSearchRanges.TextChanged
